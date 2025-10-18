@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: rgb(19, 18, 18);">
+    <div class="elements-container">
+    <input type="text" id="textInput" placeholder="Enter Text..."><br>
+    <img src="https://www.bing.com/ck/a?!&&p=5f5dd1abc418fab1f95c739f320c5c71d9711296b35071592fdb39586f30d259JmltdHM9MTc1NzU0ODgwMA&ptn=3&ver=2&hsh=4&fclid=316ed523-8d27-63b3-1936-c3408c8f62b7&u=a1L2ltYWdlcy9zZWFyY2g_cT1ibXcraTgrd2FsbHBhcGVyJmlkPTcwOEZCRTNCODY2NzU0NTQ0RkFCQUNGMEE5QTgzRUNDQUMxQTU2NjYmRk9STT1JQUNGSVI" id="qrCodeImage"><br>
+    <button id="qrbtn">Generate Code</button>
+    <p style="font: arial; font-weight: 500;">Made By Nigel</p>
+    </div>
+    <style>
+        #textInput{
+            border-color: black;
+            background-color: transparent;
+            height: 30px;
+            width: 297px;
+            margin-top: 10%;
+            font-size: 1.2rem;
+        }
+        #qrCodeImage{
+            width: 300px;
+            height: 300px;
+            margin-top: 5%;
+        }
+        #qrbtn{
+            background: linear-gradient(50deg, blue, #0ef);
+            height: 30px;
+            font-weight: 600;
+            border-radius: 7px;
+            margin-top: 4%;
+        }
+        .elements-container{
+            width: 50%;
+            height: 55%;
+            background: linear-gradient(45deg, #0ef, blue);
+            text-align: center;
+            float: center;
+            position: absolute;
+            top: 50%;
+            bottom: 50%;
+            transform: translate(50%, -50%);
+            border-radius: 20px;
+        }
+        #textInput::placeholder{
+            color: black;
+            font: arial;
+            font-size: 1.4rem;
+        }
+        @media (max-width: 480px){
+            .elements-container{
+                width: 50%;
+                margin: 20px auto;
+            }
+        }
+        @media (max-width: 768px){
+            .elements-container{
+                width: 50%;
+                margin: 20px auto;
+            }
+        }
+    </style>
+<script>
+    const button = document.getElementById("qrbtn")
+    const qrCodeImage = document.getElementById("qrCodeImage")
+    const textInput = document.getElementById("textInput")
+    button.addEventListener('click', () => {
+        if (textInput === 0){
+            alert("Enter a text")
+        } else {
+
+        
+        console.log("button clicked")
+        const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(textInput.value)}`
+        console.log("QR Code URL", qrCodeUrl)
+        qrCodeImage.src = qrCodeUrl
+        }
+    })
+</script>
+</body>
+</html>
